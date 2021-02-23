@@ -13,6 +13,7 @@ namespace DynamicViewsExample
         Label lblTxt;
         Button btnPress;
         int counter;
+       
         public MainPage()
         {
             InitializeComponent();
@@ -20,13 +21,18 @@ namespace DynamicViewsExample
             lblTxt = new Label();
             lblTxt.Text = $"Waiting for clicking";
             btnPress = new Button();
-            btnPress.Clicked += BtnPress_Clicked;
-            //btnPress.Clicked=(sender,e)=>{}
+            // btnPress.Clicked += BtnPress_Clicked;
+            btnPress.Clicked += (sender, e) => {
+                counter++;
+                lblTxt.Text = $"Clicked {counter} times";
+              };
+            btnPress.Text = "Click me";
+            btnPress.BackgroundColor = Color.BlueViolet;
             stck.Children.Add(lblTxt);
             stck.Children.Add(btnPress);
             lblTxt.FontSize = 34;
             lblTxt.HorizontalTextAlignment = TextAlignment.Center;
-          
+           
         }
 
         private void BtnPress_Clicked(object sender, EventArgs e)
